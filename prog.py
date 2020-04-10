@@ -75,15 +75,11 @@ class write_everything():
     """записываем в json файлы и добавляем в бд"""
     def __init__(self):
         pass
-    def toJSON(self):
-        """форматируем для записи в файл json"""
-        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=2)
 
     def write_json(self, wall_data, i):
         """записываем в файл json"""
         self.i = i
         self.wall_data = wall_data
-        self.myreturn = self.toJSON()
         with open("f%dJSON.json" % self.i, "w", encoding='utf8') as write_file:
             json.dump(self.wall_data, write_file, ensure_ascii=False, indent=2)
         write_file.close()
